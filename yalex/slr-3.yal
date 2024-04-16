@@ -1,0 +1,27 @@
+(* Lexer para Gramática No. 3 - Variación expresiones aritméticas simples *)
+
+(* Introducir cualquier header aqui *)
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let digit = ["0123456789"]
+let letter = ['A'-'Z''a'-'z']
+let digits = digit+
+let number = digits('.'digits)?('E'['+''-']?digits)?
+let id = letter(letter|digit)*
+
+rule tokens = 
+    ws        { print('ws') }        (* Cambie por una acción válida, que devuelva el token *)
+  | id        { print('ID') }
+  | number    { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+      archivo.write("\nNUMBER")
+  }
+  | '+'       { print('+') }
+  | '-'       { print('-') }
+  | '*'       { print('*') }
+  | '/'       { print('/') }
+  | '('       { print('(') }
+  | ')'       { print(')') }
+
+(* Introducir cualquier trailer aqui *)

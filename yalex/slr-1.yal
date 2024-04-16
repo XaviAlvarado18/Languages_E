@@ -1,0 +1,37 @@
+(* Lexer para Gramática No. 1 - Expresiones aritméticas simples para variables *)
+
+(* Introducir cualquier header aqui *)
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let letter = ['A'-'Z''a'-'z']
+let digit = ['0'-'9']
+let if = "(IF)"
+let id  = letter(letter|digit)*
+let cadenas = _(digit|letter|ws)*_
+
+
+rule tokens = 
+    ws		  { return WHITESPACE }
+  | id        { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+      archivo.write("\nID")
+  }        
+  | '+'       { 
+    print("hola")
+  }
+  | '*'       { 
+    print("Hola")
+  }
+  | '('       { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+      archivo.write("\n(")
+  }
+  | ')'       { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+      archivo.write("\n)")
+  }
+  | cadenas { print("CADENA DE CARACTERES") }       
+  | if { print("Esto es un if") }
+
+(* Introducir cualquier trailer aqui *)

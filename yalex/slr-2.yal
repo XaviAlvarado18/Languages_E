@@ -1,0 +1,31 @@
+(* Lexer para Gramática No. 2 - Expresiones aritméticas extendidas *)
+
+(* Introducir cualquier header aqui *)
+
+let delim = ["\s\t\n"]
+let ws = delim+
+let letter = ['A'-'Z''a'-'z']
+let digit = ['0'-'9']
+let digits = digit+
+let id = letter(letter|digit)*
+let number = digits('.'digits)?('E'['+''-']?digits)?
+let decimal = digits('.'digits)
+let if = "if:"
+
+rule tokens = 
+    ws        { return WHITESPACE }        (* Cambie por una acción válida, que devuelva el token *)
+  | id        { print('ID') }
+  | number    { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+      archivo.write("\nNUMBER")
+  }
+  | '+'       { print('+') }
+  | '-'       { print('-') }
+  | '*'       { print('*') }
+  | '/'       { print('/') }
+  | '('       { print('(') }
+  | ')'       { print(')') }
+  | if        { print("if") }
+  | decimal   { print('decimal')}
+
+(* Introducir cualquier trailer aqui *)
