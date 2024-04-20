@@ -343,7 +343,7 @@ class Production_Item:
                 return True, newProduction
         return False, self
 
-    def poitElement(self) -> Grammar_Element:
+    def poitElement(self) -> Union[Grammar_Element, None]:
         if self.point < len(self.Result):
             return self.Result[self.point]
         return None

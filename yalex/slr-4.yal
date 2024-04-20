@@ -12,6 +12,7 @@ let id = letter(letter|str|digit)*
 let number = digits('.'digits)?('E'['+''-']?digits)?
 let cadenas = "(digit|letter|ws)*"
 
+
 rule tokens = 
     ws		  { return WHITESPACE }
   | id        { 
@@ -43,8 +44,8 @@ rule tokens =
       archivo.write("\nTIMES")
   }
   | '/'       { return DIV }
-  | '('       { return LPAREN }
-  | ')'       { return RPAREN }
+  | '('       {print("LPAREN")}
+  | ')'      
   | cadenas { print("CADENA DE CARACTERES") }
 
 (* Introducir cualquier trailer aqui *)

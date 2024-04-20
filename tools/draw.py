@@ -45,3 +45,28 @@ def draw_AF(initState: State, legend: str = 'AF', expression='default', direct=F
     draw_state(initState)
 
     dot.render(name+'.gv', view=True, directory='./Tree/'+expression+'/'+('Direct' if direct else 'Infix'))
+
+
+def draw_LR0(initState: LRO_S, legend: str = 'AF', expression='default', useNum=False):
+    dot: 'graphviz.graphs.Digraph' = graphviz.Digraph(comment='LR0')
+    dot.attr(rankdir='LR')
+    setStates = set()
+    dot.attr(label=legend)
+
+    def draw_state(state: 'LRO_S'):
+        nonlocal useNum
+        setStates.add(state)
+        name = str(state.numState) if useNum else str(state)
+        dot.node(str(state.numState), label=name,
+                 shape='doublecircle' if state.isFinalState else 'circle')
+        for transition in state.transitions:
+            destiny = state.transitions[transition]
+            if destiny not in setStates:
+                draw_state(destiny)
+            dot.edge(str(state.numState), str(destiny.numState), label=transition.value)
+
+    draw_state(initState)
+
+    typeGraph = 'explicit' if useNum else 'implicit'
+
+    dot.render('LR0_' + typeGraph + '.gv', view=True, directory='./LR0/' + expression)

@@ -2,8 +2,8 @@ from tools.yalex_reader import *
 from tools.reader import *
 
 if __name__ == '__main__':
-    source = './yalex/slr-4.yal'
-    output = './yalex_scanner/scan_yalex4.py'
+    source = './yalex/slr-1 copy.yal'
+    output = './yalex_scanner/scan_yalex1.py'
     
     content = reader(source)
     ev = evaluate_text(content)

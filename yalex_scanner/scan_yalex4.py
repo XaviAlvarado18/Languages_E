@@ -39,26 +39,25 @@ class State:
 
 
 
+i18 = State('i18')
+i17 = State('i17')
+i16 = State('i16')
+i15 = State('i15')
+i14 = State('i14')
+i9 = State('i9')
+i13 = State('i13')
+i12 = State('i12')
+i7 = State('i7')
+i6 = State('i6')
+i11 = State('i11')
+i10 = State('i10')
+i8 = State('i8')
+i5 = State('i5')
+i2 = State('i2')
+i4 = State('i4')
+i3 = State('i3')
 i1 = State('i1')
 h1 = State('h1')
-j18 = State('j18')
-j17 = State('j17')
-j16 = State('j16')
-j15 = State('j15')
-j14 = State('j14')
-j8 = State('j8')
-j13 = State('j13')
-j12 = State('j12')
-j7 = State('j7')
-j5 = State('j5')
-j11 = State('j11')
-j10 = State('j10')
-j9 = State('j9')
-j6 = State('j6')
-j2 = State('j2')
-j4 = State('j4')
-j3 = State('j3')
-j1 = State('j1')
 g1 = State('g1')
 f1 = State('f1')
 e1 = State('e1')
@@ -128,9 +127,8 @@ a0.add_transition(58, d1)
 a0.add_transition(60, e1)
 a0.add_transition(61, f1)
 a0.add_transition(47, g1)
-a0.add_transition(40, j1)
 a0.add_transition(40, h1)
-a0.add_transition(41, i1)
+a0.add_transition(40, i1)
 
 a1.isFinalState = True
 
@@ -264,66 +262,57 @@ def tk_g1():
 
 g1.token = tk_g1
 
-j1.add_transition(100, j3)
-
-j3.add_transition(105, j4)
-
-j4.add_transition(103, j2)
-
-j2.add_transition(105, j6)
-
-j6.add_transition(116, j9)
-
-j9.add_transition(124, j10)
-
-j10.add_transition(108, j11)
-
-j11.add_transition(101, j5)
-
-j5.add_transition(116, j7)
-
-j7.add_transition(116, j12)
-
-j12.add_transition(101, j13)
-
-j13.add_transition(114, j8)
-
-j8.add_transition(124, j14)
-
-j14.add_transition(119, j15)
-
-j15.add_transition(115, j16)
-
-j16.add_transition(41, j17)
-
-j17.add_transition(42, j18)
-
-j18.isFinalState = True
-
-
-def tk_j18(): 
-	print("CADENA DE CARACTERES")
-
-
-j18.token = tk_j18
-
 h1.isFinalState = True
 
 
 def tk_h1(): 
-	return LPAREN
+	print("LPAREN")
 
 
 h1.token = tk_h1
 
-i1.isFinalState = True
+i1.add_transition(100, i3)
+
+i3.add_transition(105, i4)
+
+i4.add_transition(103, i2)
+
+i2.add_transition(105, i5)
+
+i5.add_transition(116, i8)
+
+i8.add_transition(124, i10)
+
+i10.add_transition(108, i11)
+
+i11.add_transition(101, i6)
+
+i6.add_transition(116, i7)
+
+i7.add_transition(116, i12)
+
+i12.add_transition(101, i13)
+
+i13.add_transition(114, i9)
+
+i9.add_transition(124, i14)
+
+i14.add_transition(119, i15)
+
+i15.add_transition(115, i16)
+
+i16.add_transition(41, i17)
+
+i17.add_transition(42, i18)
+
+i18.isFinalState = True
 
 
-def tk_i1(): 
-	return RPAREN
+def tk_i18(): 
+	print("CADENA DE CARACTERES")
 
 
-i1.token = tk_i1
+i18.token = tk_i18
 
 
 args = parser.parse_args()
