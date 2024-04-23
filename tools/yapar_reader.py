@@ -26,7 +26,7 @@ class YaParReader:
         self.prsDict: Dict[int, Production_Item] = {}
         self.prod_list_toPrint = ''
 
-    def organize(self):
+    def obtain_productions(self):
         organize_machine = import_module('yaPar_reader.py',
                                          {
                                              'TK_SECTION': ['%token ([A-Z]| )+', 'IGNORE ([A-Z]| )+'],
@@ -63,8 +63,8 @@ class YaParReader:
                     raise Exception('Production already exists', message)
                 self.productions[message2[0]] = Grammar_Element(message2[0])
                 self.symbols = self.symbols.union({self.productions[message2[0]]})
-                if self.firstState is None:
-                    self.firstState = self.productions[message2[0]]
+                if self.FirstState is None:
+                    self.FirstState = self.productions[message2[0]]
                 message2 = message2[1][:-1].strip().split('|')
                 prs[prName] = message2
 
@@ -84,17 +84,17 @@ class YaParReader:
                 self.prsDict[count_prod] = self.productions[key].transition_to(production, count_prod)
                 count_prod += 1
 
-        newInit = Grammar_Element(self.firstState.value + "\'")
+        newInit = Grammar_Element(self.FirstState.value + "\'")
         lastState = Grammar_Element('$', terminal=True)
         self.tokens['$'] = lastState
-        self.firstProduct = newInit.transition_to([self.firstState, lastState], 1)
+        self.firstProduct = newInit.transition_to([self.FirstState, lastState], 1)
         self.prsDict[1] = self.firstProduct
-        self.firstState = newInit
+        self.FirstState = newInit
         self.productions[newInit.value] = newInit
 
-        self.firstState.calculateFirst()
-        self.firstState.calculateFollow()
-        self.firstState.resetFirstFollow()
+        self.FirstState.calculateFirst()
+        self.FirstState.calculateFollow()
+        self.FirstState.resetFirstFollow()
         for val in self.productions.values():
             val.resetFirstFollow()
             val.calculateFirst()

@@ -4,5 +4,6 @@ import pickle
 
 if __name__ == '__main__':
     content = reader('.\yapar\slr-1.yalp')
-    reader2 = YaParReader(content)
-    print(content)
+    Yapar = YaParReader(content)
+    Yapar.obtain_productions()
+    print(Yapar)
