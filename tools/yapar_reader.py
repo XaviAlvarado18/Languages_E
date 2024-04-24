@@ -105,7 +105,7 @@ class YaParReader:
 
         return self.content
 
-    def lr_organize(self):
+    def generating_lr(self):
         count = 1
         initState = LRO_S(self.firstProduct.closureCalc(), 0)
         self.lr0_states[0] = initState
@@ -135,12 +135,12 @@ class YaParReader:
                     state.transitions[symbol] = newLR0
 
         self.LR0 = initState
-
+        #print("initState: ", initState)
         return initState
 
     def graph_lr0(self):
         if self.LR0 is None:
-            self.LR0 = self.lr_organize()
+            self.LR0 = self.generating_lr()
 
         draw_LR0(self.LR0, 'AF', 'default')
         draw_LR0(self.LR0, 'AF', 'default', useNum=True)
