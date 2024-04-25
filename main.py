@@ -2,12 +2,12 @@
 # Carnet: 21188
 # Archivo: main.py
 
-from reader import Read_Yal, Read_File
-from converter import extract_alphabet,format_regex, translate_to_postfix
-from Tree_ import make_direct_tree
-from AFD import make_direct_AFD
-from draw import draw_tree, draw_AF
-from Simulator import Simulator
+from tools.reader import Read_Yal, Read_File
+from tools.converter import extract_alphabet,format_regex, translate_to_postfix
+from tools.Tree_ import make_direct_tree
+from tools.AFD import make_direct_AFD
+from tools.draw import draw_tree, draw_AF
+from tools.Simulator import Simulator
 
 def main():
     # Read the file and return its contents
