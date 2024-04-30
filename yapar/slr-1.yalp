@@ -8,6 +8,8 @@
 %token PLUS
 %token TIMES
 %token LPAREN RPAREN
+%token WS
+IGNORE WS
 
 
 expression:

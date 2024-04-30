@@ -4,62 +4,70 @@ digraph {
 	label=AF
 	0 [label="0
 expression -> . term
-expression -> . term PLUS expression
+expression -> . expression PLUS term
 expression' -> . expression $
-term -> . NUMBER
-term -> . LPAREN expression RPAREN
-term -> . NUMBER TIMES term" shape=circle]
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> . factor
+term -> . term TIMES factor" shape=circle]
 	1 [label="1
-term -> NUMBER .
-term -> NUMBER . TIMES term" shape=circle]
-	5 [label="5
-term -> . NUMBER
-term -> . NUMBER TIMES term
-term -> . LPAREN expression RPAREN
-term -> NUMBER TIMES . term" shape=circle]
-	5 -> 1 [label=NUMBER]
+term -> factor ." shape=circle]
+	0 -> 1 [label=factor]
 	2 [label="2
 expression -> . term
-expression -> . term PLUS expression
-term -> . NUMBER
-term -> . LPAREN expression RPAREN
-term -> . NUMBER TIMES term
-term -> LPAREN . expression RPAREN" shape=circle]
-	2 -> 1 [label=NUMBER]
+expression -> . expression PLUS term
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+factor -> LPAREN . expression RPAREN
+term -> . factor
+term -> . term TIMES factor" shape=circle]
+	2 -> 1 [label=factor]
 	2 -> 2 [label=LPAREN]
-	6 [label="6
-term -> LPAREN expression . RPAREN" shape=circle]
-	9 [label="9
-term -> LPAREN expression RPAREN ." shape=circle]
-	6 -> 9 [label=RPAREN]
-	2 -> 6 [label=expression]
+	3 [label="3
+factor -> ID ." shape=circle]
+	2 -> 3 [label=ID]
 	4 [label="4
 expression -> term .
-expression -> term . PLUS expression" shape=circle]
+term -> term . TIMES factor" shape=circle]
 	7 [label="7
-expression -> . term
-expression -> . term PLUS expression
-expression -> term PLUS . expression
-term -> . NUMBER
-term -> . LPAREN expression RPAREN
-term -> . NUMBER TIMES term" shape=circle]
-	7 -> 1 [label=NUMBER]
-	7 -> 2 [label=LPAREN]
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> term TIMES . factor" shape=circle]
 	10 [label="10
-expression -> term PLUS expression ." shape=circle]
-	7 -> 10 [label=expression]
-	7 -> 4 [label=term]
-	4 -> 7 [label=PLUS]
+term -> term TIMES factor ." shape=circle]
+	7 -> 10 [label=factor]
+	7 -> 2 [label=LPAREN]
+	7 -> 3 [label=ID]
+	4 -> 7 [label=TIMES]
 	2 -> 4 [label=term]
-	5 -> 2 [label=LPAREN]
+	6 [label="6
+expression -> expression . PLUS term
+factor -> LPAREN expression . RPAREN" shape=circle]
+	9 [label="9
+factor -> LPAREN expression RPAREN ." shape=circle]
+	6 -> 9 [label=RPAREN]
 	8 [label="8
-term -> NUMBER TIMES term ." shape=circle]
-	5 -> 8 [label=term]
-	1 -> 5 [label=TIMES]
-	0 -> 1 [label=NUMBER]
+expression -> expression PLUS . term
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> . factor
+term -> . term TIMES factor" shape=circle]
+	8 -> 1 [label=factor]
+	8 -> 2 [label=LPAREN]
+	8 -> 3 [label=ID]
+	11 [label="11
+expression -> expression PLUS term .
+term -> term . TIMES factor" shape=circle]
+	11 -> 7 [label=TIMES]
+	8 -> 11 [label=term]
+	6 -> 8 [label=PLUS]
+	2 -> 6 [label=expression]
 	0 -> 2 [label=LPAREN]
-	3 [label="3
-expression' -> expression . $" shape=doublecircle]
-	0 -> 3 [label=expression]
+	0 -> 3 [label=ID]
 	0 -> 4 [label=term]
+	5 [label="5
+expression -> expression . PLUS term
+expression' -> expression . $" shape=doublecircle]
+	5 -> 8 [label=PLUS]
+	0 -> 5 [label=expression]
 }
