@@ -58,7 +58,7 @@ def draw_LR0(initState: LRO_S, legend: str = 'AF', expression='default', useNum=
         setStates.add(state)
         name = str(state.numState) if useNum else str(state)
         dot.node(str(state.numState), label=name,
-                 shape='doublecircle' if state.isFinalState else 'circle')
+                 shape='box3d' if state.isFinalState else 'box')
         for transition in state.transitions:
             destiny = state.transitions[transition]
             if destiny not in setStates:
