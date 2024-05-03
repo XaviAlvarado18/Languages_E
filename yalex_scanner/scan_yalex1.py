@@ -42,11 +42,11 @@ class State:
 g2 = State('g2')
 g1 = State('g1')
 f1 = State('f1')
-e1 = State('e1')
 h4 = State('h4')
 h3 = State('h3')
 h2 = State('h2')
 h1 = State('h1')
+e1 = State('e1')
 d1 = State('d1')
 c1 = State('c1')
 b1 = State('b1')
@@ -109,8 +109,8 @@ a0.add_transition(121, b1)
 a0.add_transition(122, b1)
 a0.add_transition(43, c1)
 a0.add_transition(42, d1)
-a0.add_transition(40, h1)
 a0.add_transition(40, e1)
+a0.add_transition(40, h1)
 a0.add_transition(41, f1)
 a0.add_transition(95, g1)
 
@@ -216,6 +216,16 @@ def tk_d1():
 
 d1.token = tk_d1
 
+e1.isFinalState = True
+
+
+def tk_e1(): 
+	with open('./tokens/tokens.txt', 'a') as archivo:
+	      archivo.write("\n(")
+
+
+e1.token = tk_e1
+
 h1.add_transition(73, h2)
 
 h2.add_transition(70, h3)
@@ -230,16 +240,6 @@ def tk_h4():
 
 
 h4.token = tk_h4
-
-e1.isFinalState = True
-
-
-def tk_e1(): 
-	with open('./tokens/tokens.txt', 'a') as archivo:
-	      archivo.write("\n(")
-
-
-e1.token = tk_e1
 
 f1.isFinalState = True
 
