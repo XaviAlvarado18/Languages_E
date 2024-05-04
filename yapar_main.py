@@ -206,8 +206,8 @@ class YaParReader:
 
 
 if __name__ == '__main__':
-    source_file = '.\yapar\slr-6.yalp'
-    output_file = '.\yapar_scanner\scan_yapar6.pkl'  
+    source_file = '.\yapar\slr-9.yalp'
+    output_file = '.\yapar_scanner\scan_yapar9.pkl'  
 
     # Lectura de Yapar y Creacion de Automata SLR
     content = reader(source_file)
