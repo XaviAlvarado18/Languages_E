@@ -1,0 +1,59 @@
+
+(* Lexer para Gram�tica No. 2 - Expresiones aritm�ticas extendidas *)
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let letter = ['A'-'Z''a'-'z']
+let digit = ['0'-'9']
+let digits = digit+
+let id = letter(letter|digit)*
+let number = digits('.'digits)?('E'['+''-']?digits)?
+
+rule tokens =
+    ws        {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+        # Escribe datos en el archivo
+        archivo.write(" ")
+}        (* Cambie por una acci�n v�lida, que devuelva el token *)
+  | id        {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("ID")
+}
+  | number    {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("NUMBER")
+}
+  | '+'       {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("PLUS")
+}
+  | '-'       {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("MINUS")
+}
+  | '*'       {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("TIMES")
+}
+  | '/'       {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("DIV")
+}
+  | '('       {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("LPAREN")
+}
+  | ')'       {
+with open('./tokens/tokens2.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("RPAREN")
+}
+
+(* Introducir cualquier trailer aqui *)

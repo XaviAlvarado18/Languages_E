@@ -1,0 +1,50 @@
+(* Lexer para Gramática No. 1 - Expresiones aritméticas simples para variables *)
+
+(* Introducir cualquier header aqui *)
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let letter = ['A'-'Z''a'-'z']
+let digit = ['0'-'9']
+let digits = digit+
+let id = letter(letter|digit)*
+
+rule tokens =
+    ws    { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+        # Escribe datos en el archivo
+        archivo.write(" ")
+ }  
+  | id        { 
+    with open('./tokens/tokens.txt', 'a') as archivo:
+        # Escribe datos en el archivo
+        archivo.write("ID")
+ }               (* Cambie por una acci�n v�lida, que devuelva el token *)
+ | digits       {
+with open('./tokens/tokens.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("PLUS")
+}
+  | '+'       {
+with open('./tokens/tokens.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("PLUS")
+}
+  | '*'       {
+with open('./tokens/tokens.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("TIMES")
+}
+  | '('       {
+with open('./tokens/tokens.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("LPAREN")
+  }
+  | ')'       {
+with open('./tokens/tokens.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("RPAREN")
+}
+
+
+(* Introducir cualquier trailer aqui *)

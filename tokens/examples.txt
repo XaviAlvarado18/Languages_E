@@ -1,0 +1,22 @@
+
+# Yapar 1
+(var1+var2)*var3
+
+
+# Yapar 2
+
+( var1 + var2 ) / ( var2 - var3 )
+
+# Yapar 3
+
+2.003+ (34.2 * 3.4E+10)
+
+# Yapar 4
+
+var1:=12*var2;
+var2:= 12=2*(2/2);
+var3:= 12/2
+
+
+# python ./yalex_scanner/scan_yalex1_ext.py ./tokens/input1.txt
+# python ./yalex_scanner/scan_yalex2_ext.py ./tokens/input2.txt

@@ -3,52 +3,124 @@ digraph {
 	rankdir=LR
 	label=AF
 	0 [label="0
-s -> . A b d H
-s' -> . s $" shape=box]
+expression -> . term
+expression -> . expression PLUS term
+expression -> . expression MINUS term
+expression' -> . expression $
+factor -> . ID
+factor -> . NUMBER
+factor -> . LPAREN expression RPAREN
+term -> . factor
+term -> . term DIV factor
+term -> . term TIMES factor" shape=box]
 	1 [label="1
-s' -> s . $" shape=box3d]
-	0 -> 1 [label=s]
-	2 [label="2
-b -> . C c
-s -> A . b d H" shape=box]
-	3 [label="3
-d -> . e f
-e -> . G
-s -> A b . d H" shape=box]
-	5 [label="5
-e -> G ." shape=box]
-	3 -> 5 [label=G]
-	6 [label="6
-d -> e . f
-f -> . F" shape=box]
-	10 [label="10
-f -> F ." shape=box]
-	6 -> 10 [label=F]
-	11 [label="11
-d -> e f ." shape=box]
-	6 -> 11 [label=f]
-	3 -> 6 [label=e]
+expression -> term .
+term -> term . DIV factor
+term -> term . TIMES factor" shape=box]
 	7 [label="7
-s -> A b d . H" shape=box]
-	12 [label="12
-s -> A b d H ." shape=box]
-	7 -> 12 [label=H]
-	3 -> 7 [label=d]
-	2 -> 3 [label=b]
-	4 [label="4
-b -> C . c
-c -> . B c" shape=box]
-	8 [label="8
-b -> C c ." shape=box]
-	4 -> 8 [label=c]
+factor -> . NUMBER
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> term DIV . factor" shape=box]
+	3 [label="3
+expression -> . term
+expression -> . expression PLUS term
+expression -> . expression MINUS term
+factor -> . NUMBER
+factor -> . ID
+factor -> LPAREN . expression RPAREN
+factor -> . LPAREN expression RPAREN
+term -> . factor
+term -> . term DIV factor
+term -> . term TIMES factor" shape=box]
+	3 -> 1 [label=term]
+	11 [label="11
+expression -> expression . MINUS term
+expression -> expression . PLUS term
+factor -> LPAREN expression . RPAREN" shape=box]
+	16 [label="16
+factor -> LPAREN expression RPAREN ." shape=box]
+	11 -> 16 [label=RPAREN]
 	9 [label="9
-c -> . B c
-c -> B . c" shape=box]
+expression -> expression PLUS . term
+factor -> . NUMBER
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> . factor
+term -> . term DIV factor
+term -> . term TIMES factor" shape=box]
+	14 [label="14
+expression -> expression PLUS term .
+term -> term . DIV factor
+term -> term . TIMES factor" shape=box]
+	14 -> 7 [label=DIV]
+	8 [label="8
+factor -> . NUMBER
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> term TIMES . factor" shape=box]
+	8 -> 3 [label=LPAREN]
 	13 [label="13
-c -> B c ." shape=box]
-	9 -> 13 [label=c]
-	9 -> 9 [label=B]
-	4 -> 9 [label=B]
-	2 -> 4 [label=C]
-	0 -> 2 [label=A]
+term -> term TIMES factor ." shape=box]
+	8 -> 13 [label=factor]
+	5 [label="5
+factor -> NUMBER ." shape=box]
+	8 -> 5 [label=NUMBER]
+	6 [label="6
+factor -> ID ." shape=box]
+	8 -> 6 [label=ID]
+	14 -> 8 [label=TIMES]
+	9 -> 14 [label=term]
+	9 -> 3 [label=LPAREN]
+	4 [label="4
+term -> factor ." shape=box]
+	9 -> 4 [label=factor]
+	9 -> 5 [label=NUMBER]
+	9 -> 6 [label=ID]
+	11 -> 9 [label=PLUS]
+	10 [label="10
+expression -> expression MINUS . term
+factor -> . NUMBER
+factor -> . ID
+factor -> . LPAREN expression RPAREN
+term -> . factor
+term -> . term DIV factor
+term -> . term TIMES factor" shape=box]
+	15 [label="15
+expression -> expression MINUS term .
+term -> term . DIV factor
+term -> term . TIMES factor" shape=box]
+	15 -> 7 [label=DIV]
+	15 -> 8 [label=TIMES]
+	10 -> 15 [label=term]
+	10 -> 3 [label=LPAREN]
+	10 -> 4 [label=factor]
+	10 -> 5 [label=NUMBER]
+	10 -> 6 [label=ID]
+	11 -> 10 [label=MINUS]
+	3 -> 11 [label=expression]
+	3 -> 3 [label=LPAREN]
+	3 -> 4 [label=factor]
+	3 -> 5 [label=NUMBER]
+	3 -> 6 [label=ID]
+	7 -> 3 [label=LPAREN]
+	12 [label="12
+term -> term DIV factor ." shape=box]
+	7 -> 12 [label=factor]
+	7 -> 5 [label=NUMBER]
+	7 -> 6 [label=ID]
+	1 -> 7 [label=DIV]
+	1 -> 8 [label=TIMES]
+	0 -> 1 [label=term]
+	2 [label="2
+expression -> expression . MINUS term
+expression -> expression . PLUS term
+expression' -> expression . $" shape=box3d]
+	2 -> 9 [label=PLUS]
+	2 -> 10 [label=MINUS]
+	0 -> 2 [label=expression]
+	0 -> 3 [label=LPAREN]
+	0 -> 4 [label=factor]
+	0 -> 5 [label=NUMBER]
+	0 -> 6 [label=ID]
 }
