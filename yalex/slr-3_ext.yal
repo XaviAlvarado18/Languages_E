@@ -1,0 +1,44 @@
+(* Lexer para Gram�tica No. 3 - Variaci�n expresiones aritm�ticas simples *)
+
+(* Introducir cualquier header aqui *)
+
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let digit = ["0123456789"]
+let digits = digit+
+let number = digits('.'digits)?('E'['+''-']?digits)?
+
+rule tokens =
+    ws        {
+with open('./tokens/tokens3.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write(" ")
+}               (* Cambie por una acci�n v�lida, que devuelva el token *)
+  | number    {
+with open('./tokens/tokens3.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("NUMBER")
+}
+  | '+'       {
+with open('./tokens/tokens3.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("PLUS")
+}
+  | '*'       {
+with open('./tokens/tokens3.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("TIMES")
+}
+  | '('       {
+with open('./tokens/tokens3.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("LPAREN")
+}
+  | ')'       {
+with open('./tokens/tokens3.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("RPAREN")
+}
+
+(* Introducir cualquier trailer aqui *)

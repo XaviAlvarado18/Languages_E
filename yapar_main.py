@@ -259,8 +259,8 @@ def SLR_simulate(content:str, reader: 'SLR_Table'):
 
 
 if __name__ == '__main__':
-    source_file = '.\yapar\slr-2.yalp'
-    output_file = '.\yapar_scanner\scan_yapar2_ext.pkl'  
+    source_file = '.\yapar\conflicto.yalp'
+    output_file = '.\yapar_scanner\conflicto.pkl'  
 
     # Lectura de Yapar y Creacion de Automata SLR
     content = reader(source_file)

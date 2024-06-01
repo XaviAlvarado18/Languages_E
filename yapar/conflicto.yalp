@@ -1,0 +1,12 @@
+%token A B C WS
+IGNORE WS
+
+
+s: 
+	  C a B A 
+	| C B B B 
+	| B a
+;
+a: 
+		B
+;

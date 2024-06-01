@@ -9,7 +9,7 @@
 
 # Yapar 3
 
-2.003+ (34.2 * 3.4E+10)
+2.003E-30 (34.2 * 3.4E+10)
 
 # Yapar 4
 
@@ -18,5 +18,8 @@ var2:= 12=2*(2/2);
 var3:= 12/2
 
 
+# COMANDOS PARA CORRER EL SCANNER YALEX
 # python ./yalex_scanner/scan_yalex1_ext.py ./tokens/input1.txt
 # python ./yalex_scanner/scan_yalex2_ext.py ./tokens/input2.txt
+# python ./yalex_scanner/scan_yalex3_ext.py ./tokens/input3.txt
+# python ./yalex_scanner/scan_yalex4_ext.py ./tokens/input4.txt

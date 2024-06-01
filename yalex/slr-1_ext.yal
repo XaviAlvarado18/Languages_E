@@ -23,7 +23,7 @@ rule tokens =
  | digits       {
 with open('./tokens/tokens.txt', 'a') as archivo:
     # Escribe datos en el archivo
-    archivo.write("PLUS")
+    archivo.write("digits")
 }
   | '+'       {
 with open('./tokens/tokens.txt', 'a') as archivo:

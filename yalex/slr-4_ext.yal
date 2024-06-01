@@ -1,0 +1,81 @@
+(* Lexer para Gram�tica No. 4 *)
+
+(* Introducir cualquier header aqui *)
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let letter = ['A'-'Z''a'-'z']
+let str = (_)*
+let digit = ['0'-'9']
+let digits = digit+
+let id = letter(letter|str|digit)*
+let number = digits('.'digits)?('E'['+''-']?digits)?
+
+rule tokens =
+    ws          {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write(" ")
+}     
+  | id        {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("ID")
+}              (* Cambie por una acci�n v�lida, que devuelva el token *)
+  | number    {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("NUMBER")
+}
+  | ';'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("SEMICOLON")
+ }
+  | ":="      {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("ASSIGNOP")
+}
+  | '<'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("LT")
+}
+  | '='       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("EQ")
+}
+  | '+'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("PLUS")
+}
+  | '-'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("MINUS")
+}
+  | '*'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("TIMES")
+}
+  | '/'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("DIV")
+}
+  | '('       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("LPAREN")
+}
+  | ')'       {
+with open('./tokens/tokens4.txt', 'a') as archivo:
+    # Escribe datos en el archivo
+    archivo.write("RPAREN")
+}
+
+(* Introducir cualquier trailer aqui *)

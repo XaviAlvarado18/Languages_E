@@ -1,0 +1,17 @@
+
+
+let delim = [' ''\t''\n']
+let ws = delim+
+let primero = A
+let segundo = B
+let tercero = C
+
+rule tokens =
+| ws { WHITESPACE }
+| primero { A }
+| segundo { B }
+| tercero { C }
+
+{
+print("trailer")
+}
